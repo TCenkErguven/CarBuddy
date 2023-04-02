@@ -1,6 +1,8 @@
 package com.carbuddy.repository.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,6 +19,8 @@ public class Color {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="color_id")
     private Long id;
+    @NotBlank
+
     @Column(name = "color_name")
     private String name;
 }

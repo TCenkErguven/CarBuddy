@@ -26,8 +26,8 @@ public class GlobalExceptionHandler {
 
      @ExceptionHandler(CarBuddyException.class)
      @ResponseBody
-     public ResponseEntity<String> handlerJava7MonoException(CarBuddyException exception){
-         System.out.println("Java7MonoException hatası...: " + exception.toString());
+     public ResponseEntity<String> handlerCarBuddyException(CarBuddyException exception){
+         System.out.println("CarBuddyException hatası...: " + exception.toString());
          return  new ResponseEntity(createErrorMessage(exception.getErrorType(),exception),exception.getErrorType().getHttpStatus());
      }
 

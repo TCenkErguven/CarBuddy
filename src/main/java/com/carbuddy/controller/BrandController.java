@@ -5,10 +5,10 @@ import com.carbuddy.repository.entity.Brand;
 import com.carbuddy.service.BrandService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+
 import static com.carbuddy.constants.Endpoints.*;
 
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
 public class BrandController {
     private final BrandService brandService;
     @PostMapping(SAVE)
-    public ResponseEntity<Void> save(SaveBrandRequestDto dto){
+    public ResponseEntity<Void> save(@RequestBody @Valid SaveBrandRequestDto dto){
         brandService.save(dto);
         return ResponseEntity.ok().build();
     }

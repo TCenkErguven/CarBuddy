@@ -5,11 +5,9 @@ import com.carbuddy.repository.entity.Customer;
 import com.carbuddy.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static com.carbuddy.constants.Endpoints.*;
@@ -19,7 +17,7 @@ import static com.carbuddy.constants.Endpoints.*;
 public class CustomerController {
     private final CustomerService customerService;
     @PostMapping(SAVE)
-    public ResponseEntity<Void> save(SaveCustomerRequestDto dto){
+    public ResponseEntity<Void> save(@RequestBody @Valid SaveCustomerRequestDto dto){
         customerService.save(dto);
         return ResponseEntity.ok().build();
     }

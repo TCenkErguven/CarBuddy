@@ -5,11 +5,9 @@ import com.carbuddy.repository.entity.Rental;
 import com.carbuddy.service.RentalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static com.carbuddy.constants.Endpoints.*;
@@ -20,7 +18,7 @@ public class RentalController {
 
     private final RentalService rentalService;
     @PostMapping(SAVE)
-    public ResponseEntity<Void> save(SaveRentalRequestDto dto){
+    public ResponseEntity<Void> save(@RequestBody @Valid SaveRentalRequestDto dto){
         rentalService.save(dto);
         return ResponseEntity.ok().build();
     }

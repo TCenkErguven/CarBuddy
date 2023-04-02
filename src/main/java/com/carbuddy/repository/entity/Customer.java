@@ -1,6 +1,8 @@
 package com.carbuddy.repository.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,5 +21,6 @@ public class Customer {
     private Long id;
     @Column(name="customer_name")
     private String name;
+    @NotBlank
     private String companyName;
 }

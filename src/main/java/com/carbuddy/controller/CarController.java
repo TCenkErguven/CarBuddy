@@ -5,15 +5,12 @@ import com.carbuddy.dto.response.FindCarByRentalResponse;
 import com.carbuddy.dto.response.jointable.FindJoinColorBrandCarResponseDto;
 import com.carbuddy.dto.response.jointable.FindJoinRentalCarCustomerDto;
 import com.carbuddy.repository.entity.Car;
-import com.carbuddy.repository.entity.JoinTable.JoinRentDateCarBrandCompany;
 import com.carbuddy.service.CarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static com.carbuddy.constants.Endpoints.*;
@@ -24,7 +21,7 @@ import static com.carbuddy.constants.Endpoints.*;
 public class CarController {
     private final CarService carService;
     @PostMapping(SAVE)
-    public ResponseEntity<Void> save(SaveCarRequestDto dto){
+    public ResponseEntity<Void> save(@RequestBody @Valid SaveCarRequestDto dto){
         carService.save(dto);
         return ResponseEntity.ok().build();
     }
@@ -60,6 +57,5 @@ public class CarController {
     public ResponseEntity<List<FindJoinRentalCarCustomerDto>> findDateCarBrandCompany(){
         return ResponseEntity.ok(carService.findDateCarBrandCompany());
     }
-
 
 }

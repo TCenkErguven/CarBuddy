@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @Builder
@@ -18,12 +19,17 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="car_id")
     private Long id;
+    @NotBlank
     @Column(length = 50,name = "car_name")
     private String name;
+    @NotBlank
     @Column(length = 4)
     private Integer modelYear;
+    @NotBlank
     private Double dailyPrice;
+    @NotBlank
     private String description;
+    @NotBlank
     private Long brandId;
 
     //Brand ManyToOne -
