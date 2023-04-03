@@ -1,5 +1,7 @@
 package com.carbuddy.service.JoinTable;
 
+import com.carbuddy.exception.CarBuddyException;
+import com.carbuddy.exception.ErrorType;
 import com.carbuddy.repository.Jointable.ICarColorRepository;
 import com.carbuddy.repository.entity.Color;
 import com.carbuddy.repository.entity.JoinTable.CarColor;
@@ -24,7 +26,7 @@ public class CarColorService extends ServiceManager<CarColor,Long> {
     public void save(Long carId,Long colorId){
         Optional<Color> color = colorService.findById(colorId);
         if(color.isEmpty()){
-            throw new NotFoundException("Bu renk veritabanına kayıtlı değildir.");
+            throw new CarBuddyException(ErrorType.NOT_FOUND_COLOR);
         }else {
             save(CarColor.builder()
                     .carId(carId)

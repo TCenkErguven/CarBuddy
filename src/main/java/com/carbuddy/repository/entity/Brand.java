@@ -20,7 +20,6 @@ public class Brand {
     @Column(name = "bid")
     private Long id;
     @NotBlank
-
     @Column(name="brand_name")
     private String name;
 }

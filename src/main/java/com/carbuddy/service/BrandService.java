@@ -1,14 +1,16 @@
 package com.carbuddy.service;
 
 import com.carbuddy.dto.request.SaveBrandRequestDto;
+import com.carbuddy.exception.CarBuddyException;
 import com.carbuddy.mapper.IBrandMapper;
 import com.carbuddy.repository.IBrandRepository;
 import com.carbuddy.repository.entity.Brand;
 import com.carbuddy.utility.ServiceManager;
 import org.springframework.stereotype.Service;
-import org.webjars.NotFoundException;
 
 import java.util.Optional;
+
+import static com.carbuddy.exception.ErrorType.FOUND_BRAND;
 
 @Service
 public class BrandService extends ServiceManager<Brand,Long> {
@@ -23,7 +25,7 @@ public class BrandService extends ServiceManager<Brand,Long> {
         if(brand.isEmpty()){
             iBrandRepository.save(IBrandMapper.INSTANCE.toBrand(dto));
         }else{
-            throw new NotFoundException(dto.getName() + ", bu marka veritabanına zaten kayıtlıdır.");
+            throw new CarBuddyException(FOUND_BRAND);
         }
     }
 }

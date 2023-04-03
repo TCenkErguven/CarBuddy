@@ -19,13 +19,10 @@ public class Rental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rid")
     private Long id;
-    @NotBlank
     private Long rentDate;
-    @NotBlank
     private Long customerId;
     //Car OneToMany -
     //Customer ManyToOne -
-    @NotBlank
     private Long carId;
 
 }

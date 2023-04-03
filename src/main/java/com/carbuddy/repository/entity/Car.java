@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Builder
@@ -22,14 +23,14 @@ public class Car {
     @NotBlank
     @Column(length = 50,name = "car_name")
     private String name;
-    @NotBlank
+    @NotNull
     @Column(length = 4)
     private Integer modelYear;
-    @NotBlank
+    @NotNull
     private Double dailyPrice;
     @NotBlank
     private String description;
-    @NotBlank
+    @NotNull
     private Long brandId;
 
     //Brand ManyToOne -

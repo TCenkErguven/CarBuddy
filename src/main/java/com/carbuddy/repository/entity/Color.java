@@ -20,7 +20,6 @@ public class Color {
     @Column(name="color_id")
     private Long id;
     @NotBlank
-
     @Column(name = "color_name")
     private String name;
 }

@@ -1,6 +1,7 @@
 package com.carbuddy.service;
 
 import com.carbuddy.dto.request.SaveRentalRequestDto;
+import com.carbuddy.exception.CarBuddyException;
 import com.carbuddy.mapper.IRentalMapper;
 import com.carbuddy.repository.IRentalRepository;
 import com.carbuddy.repository.entity.Car;
@@ -12,6 +13,8 @@ import org.webjars.NotFoundException;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.carbuddy.exception.ErrorType.NOT_FOUND_RENT;
 
 @Service
 public class RentalService extends ServiceManager<Rental,Long> {
@@ -30,7 +33,7 @@ public class RentalService extends ServiceManager<Rental,Long> {
         Optional<Car> optionalCar = carService.findById(dto.getCarId());
         Optional<Customer> optionalCustomer = customerService.findById(dto.getCustomerId());
         if(optionalCar.isEmpty()||optionalCustomer.isEmpty()){
-            throw new NotFoundException("İstenilen araba veya müşteri veri tabanına kayıtlı değildir.");
+            throw new CarBuddyException(NOT_FOUND_RENT);
         }else {
             iRentalRepository.save(IRentalMapper.INSTANCE.toRental(dto));
         }

@@ -7,6 +7,7 @@ import com.carbuddy.dto.response.jointable.FindJoinRentalCarCustomerDto;
 import com.carbuddy.repository.entity.Car;
 import com.carbuddy.service.CarService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,20 +30,20 @@ public class CarController {
     public ResponseEntity<List<Car>> findAll(){
         return ResponseEntity.ok(carService.findAll());
     }
-    @GetMapping(FIND_CARS_BY_NAME)
-    public ResponseEntity<List<Car>> findCarsByNameStartingWithIgnoreCase(String carName){
+    @GetMapping(FIND_CARS_BY_NAME+"/{carName}")
+    public ResponseEntity<List<Car>> findCarsByNameStartingWithIgnoreCase(@PathVariable String carName){
         return ResponseEntity.ok(carService.findCarsByNameStartingWithIgnoreCase(carName));
     }
-    @GetMapping(FIND_CARS_BY_BRAND)
-    public ResponseEntity<List<Car>> findCarsByBrandId(Long brandId){
+    @GetMapping(FIND_CARS_BY_BRAND+"/{brandId}")
+    public ResponseEntity<List<Car>> findCarsByBrandId(@PathVariable Long brandId){
         return ResponseEntity.ok(carService.findCarsByBrandId(brandId));
     }
-    @GetMapping(FIND_CARS_BY_COLOR)
-    public ResponseEntity<List<Car>> findCarsByColor(Long colorId){
+    @GetMapping(FIND_CARS_BY_COLOR+"/{colorId}")
+    public ResponseEntity<List<Car>> findCarsByColor(@PathVariable Long colorId){
         return ResponseEntity.ok(carService.findCarsByColor(colorId));
     }
-    @GetMapping(FIND_CARS_BY_DAILY_PRICE_LESS_THAN)
-    public ResponseEntity<List<Car>> findCarsByDailyPriceLessThan(Double dailyPrice){
+    @GetMapping(FIND_CARS_BY_DAILY_PRICE_LESS_THAN+"/{dailyPrice}")
+    public ResponseEntity<List<Car>> findCarsByDailyPriceLessThan(@PathVariable Double dailyPrice){
         return ResponseEntity.ok(carService.findCarsByDailyPriceLessThan(dailyPrice));
     }
     @GetMapping(FIND_CARS_BY_RENTAL)

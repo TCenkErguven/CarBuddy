@@ -1,6 +1,8 @@
 package com.carbuddy.service.JoinTable;
 
 import com.carbuddy.dto.response.jointable.FindJoinColorBrandCarResponseDto;
+import com.carbuddy.exception.CarBuddyException;
+import com.carbuddy.exception.ErrorType;
 import com.carbuddy.mapper.Jointable.IFindJoinColorBrandCarMapper;
 import com.carbuddy.repository.Jointable.IJoinColorBrandCarRepository;
 import com.carbuddy.repository.entity.JoinTable.JoinColorBrandCar;
@@ -23,6 +25,9 @@ public class JoinColorBrandCarService extends ServiceManager<JoinColorBrandCar,L
         JoinColorBrandCarList.forEach(item ->{
             findAllColorBrandCarList.add(IFindJoinColorBrandCarMapper.INSTANCE.findJoinColorBrandCarResponseDto(item));
         });
+        if(findAllColorBrandCarList.isEmpty()){
+            throw new CarBuddyException(ErrorType.NOT_FOUND);
+        }
         return findAllColorBrandCarList;
     }
 
