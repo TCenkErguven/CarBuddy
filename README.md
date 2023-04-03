@@ -1,0 +1,1 @@
+<img title="CARBUDDY Group Logo" alt="Alt text" src="[/images/boo.svg](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9pDzb9t99IpAiJD1Y0wrObyIP1tmjiGKi_ukOg183Br8EcT9Pq64pwV5KILZIBepkqsw&usqp=CAU)">
